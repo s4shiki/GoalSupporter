@@ -8,20 +8,26 @@ import android.app.DatePickerDialog.OnDateSetListener;
 import android.util.Log;
 import android.widget.DatePicker;
 
+/**
+ * 期限決定用日付入力ダイアログ
+ * @author Yoshiki
+ *
+ */
 public class CreateGoalDatePickerDialog implements OnDateSetListener {
-	static final String TAG = "CreateGoalDatePickerDialog";
+	static final String TAG = "CreateGoalDatePickerDialog"; /**デバッグ用*/
 
-	DatePickerDialog datePickerDialog;
-	Activity activity;
-	GoalCreate goalCreate;
+	DatePickerDialog datePickerDialog; /**日付ピッカーダイアログ*/
+	Activity activity; /**CreateGoalActivity*/
+	GoalCreate goalCreate; /**GoalCreateに値をセットするため*/
 
-	int year; // 年
-	int monthOfYear; // 月
-	int dayOfMonth; //日
+	int year; /**年*/
+	int monthOfYear; /**月*/
+	int dayOfMonth; /**日*/
 
 	/**
 	 * データピッカーダイアログを表示する
-	 * @param activity
+	 * @param activity CreateGoalActivityインスタンス
+	 * @param goalCreate GoalCreateインスタンス
 	 */
 	public void show(Activity activity,GoalCreate goalCreate) {
 		this.activity = activity;
@@ -34,18 +40,6 @@ public class CreateGoalDatePickerDialog implements OnDateSetListener {
 		datePickerDialog.show();
 	}
 
-	public int getYear() {
-		return year;
-	}
-
-	public int getMonthOfYear() {
-		return monthOfYear;
-	}
-
-	public int getDayOfMonth() {
-		return dayOfMonth;
-	}
-
 	/**
 	 * 入力されたデータをセットする
 	 */
@@ -55,7 +49,6 @@ public class CreateGoalDatePickerDialog implements OnDateSetListener {
 		Log.d(TAG, "onDateSet()");
 		Calendar deadline = new GregorianCalendar(year, monthOfYear, dayOfMonth);
 		Log.v(TAG,deadline.toString());
-		//Log.v(TAG, "year:" + year + "monthOfYear:" + monthOfYear + "dayOfMonth:" + dayOfMonth);
 		goalCreate.setDeadline(deadline);
 	}
 }

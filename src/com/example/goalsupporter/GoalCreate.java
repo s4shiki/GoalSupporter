@@ -11,25 +11,29 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+/**
+ * 目標作成画面
+ * @author Yoshiki
+ *
+ */
 public class GoalCreate implements OnClickListener {
 	static final String TAG = "GoalCreate";
-	private Button cancelButton; //キャンセルボタン
-	private Button okButton; //作成ボタン
-	private Button deadlineButton; //締め切り設定用ボタン
-	private CreateGoalDatePickerDialog test; // データピッカーダイアログ
-	private int dayStudyTime;
+	private Button cancelButton; /**キャンセルボタン*/
+	private Button okButton; /**作成ボタン*/
+	private Button deadlineButton; /**締め切り設定用ボタン*/
+	private CreateGoalDatePickerDialog test; /**データピッカーダイアログ*/
+	private int dayStudyTime; /**一日に必要な学習時間*/
 
-	private EditText goalName; //目標名
-	private Calendar deadline; //期限
-	private int studyTime_hour;// 勉強時間
-	private int studyTime_minutes; // 残り時間を分で表したもの
+	private EditText goalName; /**目標名*/
+	private Calendar deadline; /**期限*/
+	private int studyTime_hour;/**勉強時間*/
+	private int studyTime_minutes; /**残り時間を分で表したもの*/
 
-	private int dayCount; //期間の日数
+	private int dayCount; /**期間の日数*/
 
-	private TextView deadlineDisplay; // 目標達成予定日
-	//private GoalData data; // 目標名,期限,残り時間
+	private TextView deadlineDisplay; /**目標達成予定日*/
 
-	private Activity activity;
+	private Activity activity; /**CreateGoalActivity*/
 	private Intent intent;
 
 	protected void init() {

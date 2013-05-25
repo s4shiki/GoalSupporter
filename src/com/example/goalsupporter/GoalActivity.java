@@ -10,7 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 /**
- * 目標のアクティビティクラス
+ * トップ画面用目標のアクティビティクラス
  * @author Yoshiki
  *
  */
@@ -21,9 +21,13 @@ public class GoalActivity extends Activity {
 	// インテントリクエストコード
 	private static final int SHOSW_CALC = 0;
 	private static final int SHOSW_CALC2 = 1;
-	private GoalList goal_list;
-	Intent goalCreateIntent;
+	private GoalList goal_list; /**目標リスト表示用*/
+	Intent goalCreateIntent; /**目標作成画面へ遷移用*/
 
+	/**
+	 * アクションバーの設定
+	 * GoalListクラスの呼び出し
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		Log.d(TAG,"onCreate");
@@ -42,7 +46,9 @@ public class GoalActivity extends Activity {
 		mActionBar.setDisplayOptions(0, ActionBar.DISPLAY_SHOW_TITLE);
 	}
 
-	/* ActionBarへのメニューの追加 */
+	/**
+	 * ActionBarへのメニューの追加
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu){
 		//メニューの要素を追加して取得(長押ししたときに表示されるTextをセット)
