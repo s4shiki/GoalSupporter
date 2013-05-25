@@ -71,7 +71,6 @@ public class TimerActivity extends Activity {
 			str = str+":";
 		}
 
-
 		deadline.setText( String.format("%d:%02d:%02d",  goalMsec/60/60, goalMsec/60%60, goalMsec%60) );
 
 		timeMsec = Integer.parseInt( item.getDayStudyTime() )*60*1000+999;

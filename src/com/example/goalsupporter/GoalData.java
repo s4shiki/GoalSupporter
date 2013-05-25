@@ -1,6 +1,7 @@
 package com.example.goalsupporter;
 
 import java.io.Serializable;
+
 import android.util.Log;
 
 public class GoalData implements Serializable {
