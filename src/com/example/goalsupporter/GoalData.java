@@ -1,11 +1,6 @@
 package com.example.goalsupporter;
 
 import java.io.Serializable;
-<<<<<<< HEAD
-import java.util.Date;
-=======
-
->>>>>>> origin/Fujita
 import android.util.Log;
 
 /**
@@ -19,7 +14,7 @@ public class GoalData implements Serializable {
 	private String goalName; /**目標名*/
 	private String deadline; /**達成期限*/
 	private TimeData remainingTime; /**目標学習時間*/
-	private String dayStudyTime; /**一日の学習時間*/
+	private TimeData dayStudyTime; /**一日の学習時間*/
 
 	/**
 	 * 目標名を得る
@@ -41,9 +36,9 @@ public class GoalData implements Serializable {
 	 * 目標学習時間を得る
 	 * @return 目標学習時間
 	 */
-	public TimeData getRemainingTime() {
+	public String getRemainingTime() {
 		Log.d(TAG,"getRemainingTime()");
-        return remainingTime;
+        return remainingTime.getHour();
 	}
 	/**
 	 * 一日の学習時間を得る
@@ -51,7 +46,7 @@ public class GoalData implements Serializable {
 	 */
 	public String getDayStudyTime() {
 		Log.d(TAG,"getDayStudyTime()");
-        return dayStudyTime;
+        return dayStudyTime.getMinute();
 	}
 
 	/**
@@ -74,7 +69,7 @@ public class GoalData implements Serializable {
 	 * 目標学習時間を設定する
 	 * @param remainingTime 目標学習時間
 	 */
-	public void setRemainingTime(int remainingTime) {
+	public void setRemainingTime(String remainingTime) {
 		Log.d(TAG,"setRemainingTime()");
         this.remainingTime.setHour(remainingTime);
 	}
@@ -85,6 +80,6 @@ public class GoalData implements Serializable {
 	 */
 	public void setDayStudyTime(String dayStudyTime) {
 		Log.d(TAG,"setRemainingTime()");
-        this.dayStudyTime = dayStudyTime;
+        this.dayStudyTime.setMinute(dayStudyTime);
 	}
 }
