@@ -1,13 +1,14 @@
 package com.example.goalsupporter;
 
 import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 
 /**
@@ -56,8 +57,10 @@ public class GoalList {
 		save(); //リストのファイル保存
 	}
 
-	public void set() {
-
+	public void set(GoalData goalData, int position) {
+		list.set(position, goalData);
+		adapter.notifyDataSetChanged(); //リストの更新
+		save(); //リストのファイル保存
 	}
 
 	/**
@@ -80,6 +83,7 @@ public class GoalList {
 			Log.v(TAG,"GoalName:" + item.getGoalName() + "Deadline:" + item.getDeadline() + "RemainingTime：" + item.getRemainingTime());
 			Intent intent = new Intent(activity, TimerActivity.class);
 			intent.putExtra("GOALDATA", item);
+			intent.putExtra("POSITION", position);
 			activity.startActivityForResult(intent, 1);
 		}
 	}

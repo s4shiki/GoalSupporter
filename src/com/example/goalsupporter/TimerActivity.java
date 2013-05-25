@@ -62,8 +62,16 @@ public class TimerActivity extends Activity {
 
 		((TextView)findViewById(R.id.goalText)).setText( item.getGoalName() );
 
+
 		long goalMsec	= Integer.parseInt( item.getRemainingTime() )*60*60;
 		splitTime = item.getRemainingTime().split(":", 0);
+		String str = "";
+		for(int i = 0; i < splitTime.length; i++) {
+			str = str + splitTime[i];
+			str = str+":";
+		}
+
+
 		deadline.setText( String.format("%d:%02d:%02d",  goalMsec/60/60, goalMsec/60%60, goalMsec%60) );
 
 		timeMsec = Integer.parseInt( item.getDayStudyTime() )*60*1000+999;

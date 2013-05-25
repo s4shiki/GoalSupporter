@@ -1,10 +1,10 @@
 package com.example.goalsupporter;
 
-import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -82,7 +82,7 @@ public class GoalActivity extends Activity {
 				Log.v(TAG,"onActivityResult()");
 				GoalData goalData = (GoalData) data.getSerializableExtra("GOALDATA");
 
-				goal_list.add(goalData); //リストへの表示追加
+				goal_list.set(goalData, data.getIntExtra("POSITION", -1)); //リストへの表示追加
 			}
 		}
 	}
