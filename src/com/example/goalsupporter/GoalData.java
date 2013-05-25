@@ -1,7 +1,11 @@
 package com.example.goalsupporter;
 
 import java.io.Serializable;
+<<<<<<< HEAD
 import java.util.Date;
+=======
+
+>>>>>>> origin/Fujita
 import android.util.Log;
 
 /**
