@@ -1,6 +1,7 @@
 package com.example.goalsupporter;
 
 import java.io.Serializable;
+import java.util.Date;
 import android.util.Log;
 
 /**
@@ -13,7 +14,7 @@ public class GoalData implements Serializable {
 	static final String TAG = "GoalData";
 	private String goalName; /**目標名*/
 	private String deadline; /**達成期限*/
-	private String remainingTime; /**目標学習時間*/
+	private TimeData remainingTime; /**目標学習時間*/
 	private String dayStudyTime; /**一日の学習時間*/
 
 	/**
@@ -36,7 +37,7 @@ public class GoalData implements Serializable {
 	 * 目標学習時間を得る
 	 * @return 目標学習時間
 	 */
-	public String getRemainingTime() {
+	public TimeData getRemainingTime() {
 		Log.d(TAG,"getRemainingTime()");
         return remainingTime;
 	}
@@ -69,9 +70,9 @@ public class GoalData implements Serializable {
 	 * 目標学習時間を設定する
 	 * @param remainingTime 目標学習時間
 	 */
-	public void setRemainingTime(String remainingTime) {
+	public void setRemainingTime(int remainingTime) {
 		Log.d(TAG,"setRemainingTime()");
-        this.remainingTime = remainingTime;
+        this.remainingTime.setHour(remainingTime);
 	}
 	
 	/**

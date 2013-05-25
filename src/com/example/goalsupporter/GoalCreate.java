@@ -90,7 +90,7 @@ public class GoalCreate implements OnClickListener {
 		GoalData goalData = new GoalData(); // 目標名,期限,残り時間
 		goalData.setGoalName(goalName.getText().toString());
 		goalData.setDeadline(deadline.get(Calendar.YEAR) + "/" + (deadline.get(Calendar.MONTH) +1) + "/" + deadline.get(Calendar.DATE));
-		goalData.setRemainingTime(Integer.toString(studyTime_hour));
+		goalData.setRemainingTime(studyTime_hour);
 		goalData.setDayStudyTime(Integer.toString(dayStudyTime));
 
 		intent.putExtra("GOALDATA", goalData);
