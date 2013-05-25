@@ -3,24 +3,6 @@ package com.example.goalsupporter;
 import android.app.Activity;
 import android.os.Bundle;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 public class CreateGoalActivity extends Activity {
 
 	@Override
