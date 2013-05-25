@@ -13,8 +13,8 @@ public class GoalData implements Serializable {
 	static final String TAG = "GoalData";
 	private String goalName; /**目標名*/
 	private String deadline; /**達成期限*/
-	private TimeData remainingTime; /**目標学習時間*/
-	private TimeData dayStudyTime; /**一日の学習時間*/
+	private TimeData remainingTime = new TimeData(0, 0, 0); /**目標学習時間*/
+	private TimeData dayStudyTime = new TimeData(0, 0, 0); /**一日の学習時間*/
 
 	/**
 	 * 目標名を得る
