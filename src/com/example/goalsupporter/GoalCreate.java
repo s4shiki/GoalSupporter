@@ -2,6 +2,7 @@ package com.example.goalsupporter;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
@@ -87,20 +88,21 @@ public class GoalCreate implements OnClickListener {
 	 * @param activity
 	 */
 	public void add() {
-		GoalData goalData = new GoalData(); // 目標名,期限,残り時間
-		goalData.setGoalName(goalName.getText().toString());
-		goalData.setDeadline(deadline.get(Calendar.YEAR) + "/" + (deadline.get(Calendar.MONTH) +1) + "/" + deadline.get(Calendar.DATE));
-		goalData.setRemainingTime(Integer.toString(studyTime_hour));
-		goalData.setDayStudyTime(Integer.toString(dayStudyTime));
+		try {
+			GoalData goalData = new GoalData(); // 目標名,期限,残り時間
+			goalData.setGoalName(goalName.getText().toString());
+			goalData.setDeadline(deadline.get(Calendar.YEAR) + "/" + (deadline.get(Calendar.MONTH) +1) + "/" + deadline.get(Calendar.DATE));
 
-		intent.putExtra("GOALDATA", goalData);
-		//intent.putExtra("GOAL_NAME", goalName.getText().toString());
-		//intent.putExtra("DEADLINE", deadline.get(Calendar.YEAR) + "/" + (deadline.get(Calendar.MONTH) +1) + "/" + deadline.get(Calendar.DATE));
-		//intent.putExtra("REMAINING_TIME", Integer.toString(studyTime_hour));
+			TimeData time = new TimeData(studyTime_hour+"", "0", "0");
+			goalData.setRemainingTime(time);
 
-		//intent.putExtra("GOAL_NAME", "test1");
-		//intent.putExtra("DEADLINE", "test2");
-		//intent.putExtra("REMAINING_TIME", "test3");
+			time = new TimeData("0", dayStudyTime+"", "0");
+			goalData.setDayStudyTime(time);
+			intent.putExtra("GOALDATA", goalData);
+			activity.setResult(Activity.RESULT_OK, intent);
+			activity.finish();
+		} catch(Exception e) {
+		}
 	}
 
 	public void show(Activity activity) {
@@ -137,8 +139,6 @@ public class GoalCreate implements OnClickListener {
 			Log.d(TAG, "OKButton is Click");
 			intent = activity.getIntent(); //インテントを受け取る
 			add(); // GoalDataインスタンスを入れる
-			activity.setResult(Activity.RESULT_OK, intent);
-			activity.finish();
 			break;
 		case R.id.deadline_button:
 			Log.d(TAG, "DeadlineSettingButton is Click");

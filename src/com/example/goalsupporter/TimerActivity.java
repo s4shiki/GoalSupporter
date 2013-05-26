@@ -17,7 +17,7 @@ public class TimerActivity extends Activity {
 	private String TAG = "TimerActivity";
 	/**期限、一日の勉強時間、目標の値、データを保持する。GoalListからの受け取り用*/
 	private GoalData item;
-	/**一日の勉強時間のミリ秒*/
+	/**一日の勉強時間のミリ秒,残り勉強時間との時間合わせにも使用*/
 	private long timeMsec;
 	/**カウントダウンタイマーのインターバル(１秒)*/
 	private long interval = 1000;
@@ -62,19 +62,12 @@ public class TimerActivity extends Activity {
 
 		((TextView)findViewById(R.id.goalText)).setText( item.getGoalName() );
 
+		deadline.setText( String.format("%d:%02d:%02d",  Integer.parseInt(item.getRemainingTime().getHour()), Integer.parseInt(item.getRemainingTime().getMinute()), Integer.parseInt(item.getRemainingTime().getSecond())) );
 
-		long goalMsec	= Integer.parseInt( item.getRemainingTime() )*60*60;
-		splitTime = item.getRemainingTime().split(":", 0);
-		String str = "";
-		for(int i = 0; i < splitTime.length; i++) {
-			str = str + splitTime[i];
-			str = str+":";
-		}
+//		long goalMsec	= Integer.parseInt( item.getRemainingTime().getHour() )*60*60;
+//		deadline.setText( String.format("%d:%02d:%02d",  goalMsec/60/60, goalMsec/60%60, goalMsec%60) );
 
-
-		deadline.setText( String.format("%d:%02d:%02d",  goalMsec/60/60, goalMsec/60%60, goalMsec%60) );
-
-		timeMsec = Integer.parseInt( item.getDayStudyTime() )*60*1000+999;
+		timeMsec = (Integer.parseInt( item.getDayStudyTime().getMinute() )*60*1000 + Integer.parseInt( item.getDayStudyTime().getSecond() )*1000)+999;
 		timer.setText( String.format("%02d:%02d", timeMsec/1000/60, timeMsec/1000%60) );
 
 		time = timer.getText().toString();
@@ -102,8 +95,16 @@ public class TimerActivity extends Activity {
 				tcdt.cancel();
 
 				//値を返せるようにセットしておく
-				item.setRemainingTime(deadline.getText().toString());
-				item.setDayStudyTime(timer.getText().toString());
+				time			= deadline.getText().toString();
+				splitTime	= time.split(":", 0);
+				TimeData timedata = new TimeData(splitTime[0], splitTime[1], splitTime[2]);
+				item.setRemainingTime(timedata);
+
+				time			= timer.getText().toString();
+				splitTime	= time.split(":", 0);
+				timedata = new TimeData("", splitTime[0], splitTime[1]);
+				item.setDayStudyTime(timedata);
+
 				intent.putExtra("GOALDATA", item);
 				setResult(RESULT_OK, intent);
 
