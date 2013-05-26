@@ -23,12 +23,12 @@ public class GoalCreate implements OnClickListener {
 	private Button okButton; /**作成ボタン*/
 	private Button deadlineButton; /**締め切り設定用ボタン*/
 	private CreateGoalDatePickerDialog test; /**データピッカーダイアログ*/
-	private TimeData dayStudyTime; /**一日に必要な学習時間*/
+	private int dayStudyTime; /**一日に必要な学習時間*/
 
 	private EditText goalName; /**目標名*/
 	private Calendar deadline; /**期限*/
-	private TimeData studyTime_hour;/**勉強時間*/
-	private TimeData studyTime_minutes; /**残り時間を分で表したもの*/
+	private int studyTime_hour;/**勉強時間*/
+	private int studyTime_minutes; /**残り時間を分で表したもの*/
 
 	private int dayCount; /**期間の日数*/
 
@@ -59,15 +59,15 @@ public class GoalCreate implements OnClickListener {
 		//allStudyTime /
 		EditText studytime = (EditText) activity.findViewById(R.id.allStudyTime_editText);
 
-		studyTime_hour.setHour(studytime.getText().toString());
-		studyTime_minutes.setMinute(Integer.parseInt(studyTime_hour.getHour()) * 60);
-		dayStudyTime.setMinute(Integer.parseInt(studyTime_minutes.getMinute()) / dayCount);
+		studyTime_hour = Integer.parseInt(studytime.getText().toString());
+		studyTime_minutes = studyTime_hour * 60;
+		dayStudyTime = studyTime_minutes / dayCount;
 		Log.v(TAG, "dayStudyTime:" + dayStudyTime);
 	}
 
 	protected void setViewStudyTime() {
 		TextView studyTimeTextView = (TextView) activity.findViewById(R.id.today_studytime_textView);
-		studyTimeTextView.setText(dayStudyTime.getMinute());
+		studyTimeTextView.setText(Integer.toString(dayStudyTime));
 	}
 
 	/**
@@ -92,6 +92,7 @@ public class GoalCreate implements OnClickListener {
 		goalData.setGoalName(goalName.getText().toString());
 		goalData.setDeadline(deadline.get(Calendar.YEAR) + "/" + (deadline.get(Calendar.MONTH) +1) + "/" + deadline.get(Calendar.DATE));
 <<<<<<< HEAD
+<<<<<<< HEAD
 		//goalData.setRemainingTime(Integer.toString(studyTime_hour));
 		goalData.setRemainingTime(studyTime_hour);
 		goalData.setDayStudyTime(dayStudyTime.getMinute());
@@ -99,6 +100,10 @@ public class GoalCreate implements OnClickListener {
 		goalData.setRemainingTime(studyTime_hour +"");
 		goalData.setDayStudyTime(Integer.toString(dayStudyTime));
 >>>>>>> 3ac2d051e15353dae7d9ff93eb4a8b460329f86f
+=======
+		goalData.setRemainingTime(Integer.toString(studyTime_hour));
+		goalData.setDayStudyTime(Integer.toString(dayStudyTime));
+>>>>>>> parent of deb27e0...  TimeDataクラスへの適応
 
 		intent.putExtra("GOALDATA", goalData);
 		//intent.putExtra("GOAL_NAME", goalName.getText().toString());

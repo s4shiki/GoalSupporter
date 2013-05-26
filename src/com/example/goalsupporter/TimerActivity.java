@@ -101,8 +101,8 @@ public class TimerActivity extends Activity {
 				tcdt.cancel();
 
 				//値を返せるようにセットしておく
-				//item.setRemainingTime(deadline.getText().toString());
-				//item.setDayStudyTime(timer.getText().toString());
+				item.setRemainingTime(deadline.getText().toString());
+				item.setDayStudyTime(timer.getText().toString());
 				intent.putExtra("GOALDATA", item);
 				setResult(RESULT_OK, intent);
 
