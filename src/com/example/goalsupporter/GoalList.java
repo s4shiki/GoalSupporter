@@ -30,6 +30,7 @@ public class GoalList {
 		activity.setContentView(R.layout.activity_goal);
 		listView = (ListView)activity.findViewById(R.id.listView1);
 		listView.setOnItemClickListener(new ClickEvent());
+		listView.setOnItemLongClickListener(new LongTapEvent());
 
 		list = new ArrayList<Object>(); // 目標表示用リスト
 		list = Serializing.Load(activity);
@@ -94,8 +95,11 @@ public class GoalList {
 	 */
 	class LongTapEvent implements OnItemLongClickListener {
 		@Override
-		public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+		public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
 			Log.d(TAG, "OnItemLongClickListener");
+			GoalData item = (GoalData)listView.getItemAtPosition(position);
+			adapter.remove(item);
+			save();
 			return false;
 		}
 	}
