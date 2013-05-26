@@ -1,12 +1,14 @@
 package com.example.goalsupporter;
 
+import java.io.Serializable;
+
 import android.util.Log;
 
 /**
  * 時間の情報を保持するクラス
  * @author Hiromu Fujita
  */
-public class TimeData {
+public class TimeData implements Serializable {
 	/**Log.v用タグ*/
 	private static final String TAG = "TimeData";
 	/**時間*/
@@ -20,12 +22,6 @@ public class TimeData {
 		this.hour = hour;
 		this.minute = minute;
 		this.second = second;
-	}
-
-	public TimeData(int hour, int minute, int second) {
-		this.hour = String.valueOf(hour);
-		this.minute = String.valueOf(minute);
-		this.second = String.valueOf(second);
 	}
 
 	/**
@@ -80,32 +76,5 @@ public class TimeData {
 	public void setSecond(String second) {
 		Log.v(TAG, "setSecond");
 		this.second = second;
-	}
-	
-	/**
-	 * 時間セット
-	 * @param hour
-	 */
-	public void setHour(int hour) {
-		Log.v(TAG, "setHour");
-		this.hour = String.valueOf(hour);
-	}
-
-	/**
-	 * 分セット
-	 * @param minute
-	 */
-	public void setMinute(int minute) {
-		Log.v(TAG, "getHour");
-		this.minute = String.valueOf(minute);
-	}
-
-	/**
-	 * 秒セット
-	 * @param second
-	 */
-	public void setSecond(int second) {
-		Log.v(TAG, "setSecond");
-		this.second = String.valueOf(second);
 	}
 }

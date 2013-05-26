@@ -1,6 +1,7 @@
 package com.example.goalsupporter;
 
 import java.util.ArrayList;
+
 import android.content.Context;
 import android.graphics.Typeface;
 import android.util.Log;
@@ -48,10 +49,10 @@ public class ListAdapter extends ArrayAdapter<Object> {
 				leftScreenName.setText(item.getDeadline());
 			}
 			if (rightScreenName != null) {
-				rightScreenName.setText(item.getRemainingTime());
+				rightScreenName.setText( item.getRemainingTime().getHour()+":"+item.getRemainingTime().getMinute()+":"+item.getRemainingTime().getSecond());
 			}
 			if (dayStudyTime != null) {
-				dayStudyTime.setText(item.getDayStudyTime());
+				dayStudyTime.setText(item.getDayStudyTime().getMinute()+":"+item.getDayStudyTime().getSecond());
 			}
 
 		}
