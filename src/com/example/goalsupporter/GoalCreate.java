@@ -2,6 +2,7 @@ package com.example.goalsupporter;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
@@ -90,9 +91,14 @@ public class GoalCreate implements OnClickListener {
 		GoalData goalData = new GoalData(); // 目標名,期限,残り時間
 		goalData.setGoalName(goalName.getText().toString());
 		goalData.setDeadline(deadline.get(Calendar.YEAR) + "/" + (deadline.get(Calendar.MONTH) +1) + "/" + deadline.get(Calendar.DATE));
+<<<<<<< HEAD
 		//goalData.setRemainingTime(Integer.toString(studyTime_hour));
 		goalData.setRemainingTime(studyTime_hour);
 		goalData.setDayStudyTime(dayStudyTime.getMinute());
+=======
+		goalData.setRemainingTime(studyTime_hour +"");
+		goalData.setDayStudyTime(Integer.toString(dayStudyTime));
+>>>>>>> 3ac2d051e15353dae7d9ff93eb4a8b460329f86f
 
 		intent.putExtra("GOALDATA", goalData);
 		//intent.putExtra("GOAL_NAME", goalName.getText().toString());
