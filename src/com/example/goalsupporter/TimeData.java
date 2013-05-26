@@ -9,11 +9,8 @@ import android.util.Log;
 public class TimeData {
 	/**Log.v用タグ*/
 	private static final String TAG = "TimeData";
-	/**時間*/
 	private String hour;
-	/**分*/
 	private String minute;
-	/**秒*/
 	private String second;
 
 	public TimeData(String hour, String minute, String second) {
